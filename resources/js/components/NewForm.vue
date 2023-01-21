@@ -24,7 +24,7 @@
                 </form>
                 <div class="mt-4 space-y-4">
                     <span class="py-1 px-4 rounded bg-gray-300 text-sm">Form fields</span>
-                    <DisclosureMenu :formFields="formFields"/>
+                    <DisclosureMenu :formFields="form.formFields"/>
                 </div>
             </div>
             <div class="w-1/4 p-4 border-l border-slate-300 h-screen">
@@ -56,7 +56,6 @@ export default {
         return {
             fields: [],
             selectedField: null,
-            formFields: [],
             selectedFormField: null,
         }
     },
@@ -74,8 +73,7 @@ export default {
             this.selectedField = field;
             axios.post('api/form-fields', {name: 'unnamed!', form_id: this.form.id, field_id: field.id })
                 .then((response) => {
-                    console.log(response.data.data)
-                    this.formFields.push(response.data.data);
+                    this.form.formFields.push(response.data.data);
                     this.selectedFormField = response.data.data;
                 })
                 .catch((error) => {

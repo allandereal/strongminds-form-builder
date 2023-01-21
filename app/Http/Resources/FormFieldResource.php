@@ -17,8 +17,8 @@ class FormFieldResource extends JsonResource
         return [
             'id' => $this->id,
             'name' => $this->name,
-            'form' => new FormResource($this->form),
-            'field' => new FieldResource($this->field)
+            'form' => $this->form->attributesToArray(),
+            'field' => $this->field->attributesToArray()
         ];
     }
 }

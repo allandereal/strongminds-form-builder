@@ -18,7 +18,8 @@ export default {
                 id: null,
                 name: '',
                 description: '',
-                created_at: ''
+                created_at: '',
+                formFields: []
             },
         }
     },

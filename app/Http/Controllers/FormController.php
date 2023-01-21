@@ -16,7 +16,7 @@ class FormController extends Controller
      */
     public function index()
     {
-        return FormResource::collection(Form::all([
+        return FormResource::collection(Form::with(['formFields'])->get([
             'id',
             'name',
             'description',
@@ -44,7 +44,7 @@ class FormController extends Controller
     {
         $form = Form::create($request->validated());
 
-        return new FormResource($form);
+        return new FormResource($form->load(['formFields']));
     }
 
     /**
