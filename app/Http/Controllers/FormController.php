@@ -42,7 +42,9 @@ class FormController extends Controller
      */
     public function store(StoreFormRequest $request)
     {
-        //
+        $form = Form::create($request->validated());
+
+        return new FormResource($form);
     }
 
     /**

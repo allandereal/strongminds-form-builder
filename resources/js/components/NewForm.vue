@@ -2,12 +2,41 @@
     <div class="w-full py-2 flex flex-col">
         <div class="flex items-center justify-between px-6 border-b border-slate-300 w-full pb-2">
             <h3 class="font-semibold">Strongminds form builder</h3>
+            <a href="/" @click.prevent="this.$emit('show-all-forms')" class="text-indigo-600">view all forms</a>
         </div>
-        <div class="flex items-start justify-between px-6 h-screen w-full">
-            <div class="w-1/4 py-4 h-screen">asds</div>
-            <div class="w-1/4 p-4 border-l border-slate-300 h-screen">bdsdx</div>
-            <div class="w-2/4 h-screen border-l border-slate-300 bg-slate-200">
-                <div class="p-4">edejdej</div>
+        <div class="flex items-start justify-between h-screen w-full">
+            <div class="w-1/4 py-4 px-6 h-screen">
+                <div class="flex justify-between items-center" v-show="form.id !== null">
+                    <div class="font-semibold">{{ form.name}}</div>
+                    <SelectFieldMenu :fields="fields" @field-selected="fieldSelected"/>
+                </div>
+                <form @submit.prevent="saveForm" class="space-y-4" v-show="form.id === null">
+                    <span>Create new form</span>
+                    <div>
+                        <label>Name</label>
+                        <input class="w-full rounded" type="text" v-model="form.name" required>
+                    </div>
+                    <div>
+                        <label>Description</label>
+                        <textarea class="w-full rounded" v-model="form.description"></textarea>
+                    </div>
+                    <button type="submit" class="rounded py-1 px-2 text-white bg-indigo-600">save</button>
+                </form>
+                <div class="mt-4">
+                    <span class="py-1 px-4 rounded bg-gray-300 text-sm">Form fields</span>
+                    <ul class="flex flex-col gap-2 mt-4">
+                        <li class="hover:bg-gray-300 py-1 px-2" v-for="formField in formFields">{{ formField.name }}</li>
+                    </ul>
+
+                </div>
+            </div>
+            <div class="w-1/4 p-4 border-l border-slate-300 h-screen">
+                <ul>
+                    <li></li>
+                </ul>
+            </div>
+            <div class="w-2/4 p-4 h-screen border-l border-gray-300 bg-gray-200">
+                <div class="w-full p-4 bg-white rounded">edejdej</div>
             </div>
         </div>
     </div>
@@ -15,16 +44,47 @@
 
 <script>
 import axios from "axios";
+import SelectFieldMenu from "./SelectFieldMenu.vue";
 
 export default {
     name: "Forms",
+    components: {SelectFieldMenu},
     data(){
         return {
-
+            form: {
+                id: null,
+                name: '',
+                description: '',
+                created_at: ''
+            },
+            fields: [],
+            selectedField: null,
+            formFields: [],
         }
     },
+    methods: {
+        saveForm(){
+            axios.post('api/forms', this.form)
+                .then((response) => {
+                    this.form = response.data.data
+                })
+                .catch((error) => {
+                    console.log(error)
+                })
+        },
+        fieldSelected(field){
+            this.selectedField = field;
+            this.formFields.push(field)
+        },
+    },
     mounted() {
-
+        axios.get('api/fields')
+            .then((response) => {
+                this.fields = response.data.data
+            })
+            .catch((error) => {
+                console.log(error)
+            })
     },
 }
 </script>
