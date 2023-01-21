@@ -1,7 +1,12 @@
 <template>
     <div class="min-h-screen bg-white py-4 sm:pt-0">
         <Forms v-show="!showNewForm" @create-form="toggleOpenForm()" @edit-form="editForm"/>
-        <NewForm v-show="showNewForm" :form="activeForm" @show-all-forms="toggleOpenForm()"/>
+        <NewForm
+            v-show="showNewForm"
+            :form="activeForm"
+            @show-all-forms="toggleOpenForm()"
+            @form-field-deleted="resetForm"
+        />
     </div>
 </template>
 
@@ -31,6 +36,9 @@ export default {
             this.activeForm = form
             this.showNewForm = true;
 
+        },
+        resetForm(form){
+            this.activeForm = form
         }
     },
     components: {

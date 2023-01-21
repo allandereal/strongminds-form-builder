@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreFormFieldRequest;
 use App\Http\Requests\UpdateFormFieldRequest;
 use App\Http\Resources\FormFieldResource;
+use App\Http\Resources\FormResource;
+use App\Models\Form;
 use App\Models\FormField;
 
 class FormFieldController extends Controller
@@ -83,6 +85,10 @@ class FormFieldController extends Controller
      */
     public function destroy(FormField $formField)
     {
-        //
+        $form_id =$formField->form_id;
+
+        $formField->delete();
+
+        return new FormResource(Form::with(['formFields'])->find($form_id));
     }
 }

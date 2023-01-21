@@ -1,11 +1,11 @@
 <template>
     <div class="w-full py-2 flex flex-col">
-        <div class="flex items-center justify-between px-6 border-b border-slate-300 w-full pb-2">
+        <div class="flex items-center justify-between px-4 border-b border-slate-300 w-full pb-2">
             <h3 class="font-semibold">Strongminds form builder</h3>
             <a href="/" @click.prevent="this.$emit('show-all-forms')" class="text-indigo-600">view all forms</a>
         </div>
         <div class="flex items-start justify-between h-screen w-full">
-            <div class="w-1/4 py-4 px-6 h-screen">
+            <div class="w-1/4 py-4 pl-4 pr-1 h-screen">
                 <div class="flex justify-between items-center" v-show="form.id !== null">
                     <div class="font-semibold">{{ form.name}}</div>
                     <SelectFieldMenu :fields="fields" @field-selected="fieldSelected"/>
@@ -24,7 +24,7 @@
                 </form>
                 <div class="mt-4 space-y-4">
                     <span class="py-1 px-4 rounded bg-gray-300 text-sm">Form fields</span>
-                    <DisclosureMenu :formFields="form.formFields"/>
+                    <DisclosureMenu :form="form"/>
                 </div>
             </div>
             <div class="w-1/4 p-4 border-l border-slate-300 h-screen">
