@@ -23,4 +23,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::resource('forms', FormController::class)->only(['index', 'store']);
 Route::resource('fields', FieldController::class)->only(['index', 'store']);
-Route::resource('form-fields', FormFieldController::class)->only(['index', 'store']);
+Route::resource('form-fields', FormFieldController::class)->only(['index', 'store', 'update']);

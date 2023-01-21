@@ -72,7 +72,7 @@ class FormFieldController extends Controller
      */
     public function update(UpdateFormFieldRequest $request, FormField $formField)
     {
-        //
+        return $formField->update($request->validated());
     }
 
     /**

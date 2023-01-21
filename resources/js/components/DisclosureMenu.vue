@@ -16,7 +16,7 @@
             <DisclosurePanel class="px-4 pt-4 pb-2 text-sm text-gray-500">
                 <form>
                     <label>Name</label>
-                    <input class="border rounded-lg p-2 " v-model="formField.name">
+                    <input @change="updateFormFieldName(formField)" class="border rounded-lg p-2 " v-model="formField.name">
                 </form>
             </DisclosurePanel>
         </Disclosure>
@@ -26,9 +26,19 @@
 <script>
 import { Disclosure, DisclosureButton, DisclosurePanel } from '@headlessui/vue'
 import { ChevronUpIcon } from '@heroicons/vue/20/solid'
+import axios from "axios";
+
 export default {
     name: "DisclosureMenu",
     props: ['formFields'],
+
+    methods: {
+        updateFormFieldName(formField){
+            axios.put('api/form-fields/' + formField.id, formField)
+                .then()
+                .catch()
+        }
+    },
     components: {
         Disclosure, DisclosureButton, DisclosurePanel, ChevronUpIcon
     }

@@ -24,4 +24,21 @@ class FormFieldTest extends TestCase
 
         $this->assertDatabaseHas('form_fields', $form_field->attributesToArray());
     }
+
+    public function test_can_update_form_field_name()
+    {
+        $old_name = fake()->name();
+        $new_name = fake()->name();
+
+        $form_field = FormField::factory()->create(['name' => $old_name]);
+        $new_form_field = [
+            'name' => $new_name,
+            'id' => $form_field->id
+        ];
+
+        $response = $this->put(route('form-fields.update', ['form_field' => $form_field->id]), $new_form_field);
+
+        $this->assertDatabaseHas('form_fields', $new_form_field);
+        $response->assertStatus(200);
+    }
 }
