@@ -22,12 +22,9 @@
                     </div>
                     <button type="submit" class="rounded py-1 px-2 text-white bg-indigo-600">save</button>
                 </form>
-                <div class="mt-4">
+                <div class="mt-4 space-y-4">
                     <span class="py-1 px-4 rounded bg-gray-300 text-sm">Form fields</span>
-                    <ul class="flex flex-col gap-2 mt-4">
-                        <li class="hover:bg-gray-300 py-1 px-2" v-for="formField in formFields">{{ formField.name }}</li>
-                    </ul>
-
+                    <DisclosureMenu :formFields="formFields"/>
                 </div>
             </div>
             <div class="w-1/4 p-4 border-l border-slate-300 h-screen">
@@ -36,7 +33,11 @@
                 </ul>
             </div>
             <div class="w-2/4 p-4 h-screen border-l border-gray-300 bg-gray-200">
-                <div class="w-full p-4 bg-white rounded">edejdej</div>
+                <div class="w-full p-4 bg-white rounded">
+                    <div>
+                        Rendered form
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -45,10 +46,11 @@
 <script>
 import axios from "axios";
 import SelectFieldMenu from "./SelectFieldMenu.vue";
+import DisclosureMenu from "./DisclosureMenu.vue";
 
 export default {
     name: "Forms",
-    components: {SelectFieldMenu},
+    components: {DisclosureMenu, SelectFieldMenu},
     data(){
         return {
             form: {
@@ -60,6 +62,7 @@ export default {
             fields: [],
             selectedField: null,
             formFields: [],
+            selectedFormField: null,
         }
     },
     methods: {
@@ -74,7 +77,10 @@ export default {
         },
         fieldSelected(field){
             this.selectedField = field;
-            this.formFields.push(field)
+            this.formFields.push({name: '', field: field})
+        },
+        updateSelectedFormField(){
+
         },
     },
     mounted() {
