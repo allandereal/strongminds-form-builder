@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\FieldController;
 use App\Http\Controllers\FormController;
+use App\Http\Controllers\FormFieldController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -22,3 +23,4 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::resource('forms', FormController::class)->only(['index', 'store']);
 Route::resource('fields', FieldController::class)->only(['index', 'store']);
+Route::resource('form-fields', FormFieldController::class)->only(['index', 'store']);

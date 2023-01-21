@@ -2,12 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreFieldRequest;
-use App\Http\Requests\UpdateFieldRequest;
-use App\Http\Resources\FieldResource;
-use App\Models\field;
+use App\Http\Requests\StoreFormFieldRequest;
+use App\Http\Requests\UpdateFormFieldRequest;
+use App\Http\Resources\FormFieldResource;
+use App\Models\FormField;
 
-class FieldController extends Controller
+class FormFieldController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,7 +16,7 @@ class FieldController extends Controller
      */
     public function index()
     {
-        return FieldResource::collection(Field::all(['name', 'html_tag']));
+        //
     }
 
     /**
@@ -32,21 +32,22 @@ class FieldController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreFieldRequest  $request
+     * @param  \App\Http\Requests\StoreFormFieldRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreFieldRequest $request)
+    public function store(StoreFormFieldRequest $request)
     {
-        return new FieldResource(Field::create($request->validated()));
+        $form_field = FormField::create($request->validated());
+        return new FormFieldResource($form_field);
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\field  $field
+     * @param  \App\Models\FormField  $formField
      * @return \Illuminate\Http\Response
      */
-    public function show(field $field)
+    public function show(FormField $formField)
     {
         //
     }
@@ -54,10 +55,10 @@ class FieldController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\field  $field
+     * @param  \App\Models\FormField  $formField
      * @return \Illuminate\Http\Response
      */
-    public function edit(field $field)
+    public function edit(FormField $formField)
     {
         //
     }
@@ -65,11 +66,11 @@ class FieldController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateFieldRequest  $request
-     * @param  \App\Models\field  $field
+     * @param  \App\Http\Requests\UpdateFormFieldRequest  $request
+     * @param  \App\Models\FormField  $formField
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateFieldRequest $request, field $field)
+    public function update(UpdateFormFieldRequest $request, FormField $formField)
     {
         //
     }
@@ -77,10 +78,10 @@ class FieldController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\field  $field
+     * @param  \App\Models\FormField  $formField
      * @return \Illuminate\Http\Response
      */
-    public function destroy(field $field)
+    public function destroy(FormField $formField)
     {
         //
     }
