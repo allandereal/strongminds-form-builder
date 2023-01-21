@@ -17,8 +17,8 @@ class FieldFactory extends Factory
     public function definition()
     {
         return [
-            'name' => 'input',
-            'html_tag' => 'input'
+            'name' => fake()->randomElement(['input']),
+            'html_tag' => fake()->randomElement(['input', 'checkbox']),
         ];
     }
 }

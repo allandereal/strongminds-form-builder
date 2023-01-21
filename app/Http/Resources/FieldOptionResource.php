@@ -4,7 +4,7 @@ namespace App\Http\Resources;
 
 use Illuminate\Http\Resources\Json\JsonResource;
 
-class FormFieldResource extends JsonResource
+class FieldOptionResource extends JsonResource
 {
     /**
      * Transform the resource into an array.
@@ -16,10 +16,9 @@ class FormFieldResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'name' => $this->name,
-            'form' => $this->form->attributesToArray(),
-            'field' => $this->field->attributesToArray(),
-            'fieldOptions' => FieldOptionResource::collection($this->fieldOptions),
+            'form_field_id' => $this->form_field_id,
+            'value' => $this->value,
+            'checked' => $this->checked,
         ];
     }
 }

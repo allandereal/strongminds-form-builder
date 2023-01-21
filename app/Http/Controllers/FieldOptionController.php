@@ -2,12 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Requests\StoreFormRequest;
-use App\Http\Requests\UpdateFormRequest;
-use App\Http\Resources\FormResource;
-use App\Models\Form;
+use App\Http\Requests\StoreFieldOptionRequest;
+use App\Http\Requests\UpdateFieldOptionRequest;
+use App\Models\FieldOption;
 
-class FormController extends Controller
+class FieldOptionController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,12 +15,7 @@ class FormController extends Controller
      */
     public function index()
     {
-        return FormResource::collection(Form::with(['formFields.fieldOptions'])->get([
-            'id',
-            'name',
-            'description',
-            'created_at'
-        ]));
+        //
     }
 
     /**
@@ -37,23 +31,21 @@ class FormController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \App\Http\Requests\StoreFormRequest  $request
+     * @param  \App\Http\Requests\StoreFieldOptionRequest  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(StoreFormRequest $request)
+    public function store(StoreFieldOptionRequest $request)
     {
-        $form = Form::create($request->validated());
-
-        return new FormResource($form->load(['formFields.fieldOptions']));
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Form  $form
+     * @param  \App\Models\FieldOption  $fieldOption
      * @return \Illuminate\Http\Response
      */
-    public function show(Form $form)
+    public function show(FieldOption $fieldOption)
     {
         //
     }
@@ -61,10 +53,10 @@ class FormController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Form  $form
+     * @param  \App\Models\FieldOption  $fieldOption
      * @return \Illuminate\Http\Response
      */
-    public function edit(Form $form)
+    public function edit(FieldOption $fieldOption)
     {
         //
     }
@@ -72,11 +64,11 @@ class FormController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \App\Http\Requests\UpdateFormRequest  $request
-     * @param  \App\Models\Form  $form
+     * @param  \App\Http\Requests\UpdateFieldOptionRequest  $request
+     * @param  \App\Models\FieldOption  $fieldOption
      * @return \Illuminate\Http\Response
      */
-    public function update(UpdateFormRequest $request, Form $form)
+    public function update(UpdateFieldOptionRequest $request, FieldOption $fieldOption)
     {
         //
     }
@@ -84,10 +76,10 @@ class FormController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Form  $form
+     * @param  \App\Models\FieldOption  $fieldOption
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Form $form)
+    public function destroy(FieldOption $fieldOption)
     {
         //
     }

@@ -1,6 +1,6 @@
 <template>
     <div>
-        <div class="flex items-center justify-between space-x-2" v-for="formField in form.formFields">
+        <div class="flex items-start justify-between space-x-2" v-for="formField in form.formFields">
             <div class="w-full">
             <Disclosure v-slot="{ open }">
                 <DisclosureButton
@@ -16,13 +16,24 @@
                     />
                 </DisclosureButton>
                 <DisclosurePanel class="px-4 pt-4 pb-2 text-sm text-gray-500">
-                    <form>
+                    <form class="flex items-center justify-start space-x-2">
                         <label>Name</label>
                         <input @change="updateFormFieldName(formField)" class="border rounded-lg p-2 " v-model="formField.name">
                     </form>
+                    <h4 class="py-4 font-semibold text-gray-700">Options</h4>
+                    <ul>
+                        <li class="rounded py-1 px-2 hover:bg-gray-300 flex justify-between" v-for="fieldOption in formField.fieldOptions">
+                            <span>{{ fieldOption.value }}</span>
+                            <button class="text-white rounded-full w-4 h-4 p-3 bg-gray-400 flex items-center justify-center">x</button>
+                        </li>
+                        <li class="px-2">
+                            <button class="text-indigo-600">add more</button>
+                        </li>
+                    </ul>
+                    <h4 class="py-4 font-semibold text-gray-700">Validation</h4>
                 </DisclosurePanel>
             </Disclosure></div>
-            <button @click="deleteFormField(formField)">
+            <button class="mt-6" @click="deleteFormField(formField)">
                 <TrashIcon class="w-4 h-4 text-red-400 font-light text-sm" />
             </button>
         </div>
@@ -51,6 +62,7 @@ export default {
         deleteFormField(formField){
             axios.delete('api/form-fields/' + formField.id, formField)
                 .then((response) => {
+                    console.log(response.data.data)
                     this.$parent.$emit('form-field-deleted', response.data.data)
                 })
                 .catch()

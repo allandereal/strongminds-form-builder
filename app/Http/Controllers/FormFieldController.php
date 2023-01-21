@@ -89,6 +89,6 @@ class FormFieldController extends Controller
 
         $formField->delete();
 
-        return new FormResource(Form::with(['formFields'])->find($form_id));
+        return new FormResource(Form::with(['formFields.fieldOptions'])->find($form_id));
     }
 }

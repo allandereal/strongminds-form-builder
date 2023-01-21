@@ -21,7 +21,7 @@ class FormFieldFactory extends Factory
         return [
             'name' => fake()->word(),
             'form_id' => Form::factory(),
-            'field_id' => Field::factory()
+            'field_id' => fake()->randomElement(range(1,5))
         ];
     }
 }
