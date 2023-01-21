@@ -10,14 +10,49 @@
                     <span class="font-sm">Create form</span>
                 </button>
                 <hr class="border-b border-slate-200 w-full"/>
+                <table class="min-w-full divide-y divide-gray-300">
+                    <thead class="bg-gray-50">
+                    <tr>
+                        <th class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Name</th>
+                        <th class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Description</th>
+                        <th class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Created at</th>
+                        <th class="px-3 py-3.5 text-left text-sm font-semibold text-gray-900">Action</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr v-for="form in forms" :key="form.id">
+                        <td class="px-3 py-4 text-sm text-gray-500">{{ form.name}}</td>
+                        <td class="px-3 py-4 text-sm text-gray-500">{{ form.description}}</td>
+                        <td class="px-3 py-4 text-sm text-gray-500">{{ form.created_at}}</td>
+                        <td class="px-3 py-4 text-sm text-gray-500">
+                            <a class="text-indigo-500" :href="'api/forms/'+ form.id">view</a>
+                        </td>
+                    </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
 </template>
 
 <script>
+import axios from "axios";
 export default {
-    name: "App"
+    name: "App",
+    data(){
+        return {
+            forms: []
+        }
+    },
+    mounted() {
+        axios.get('api/forms')
+            .then((response) => {
+                this.forms = response.data.data
+            })
+            .catch((error) => {
+                console.log(error)
+            })
+    },
 }
 </script>
 
