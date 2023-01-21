@@ -16,7 +16,7 @@ class FieldController extends Controller
      */
     public function index()
     {
-        return FieldResource::collection(Field::all(['name', 'html_tag']));
+        return FieldResource::collection(Field::all(['id', 'name', 'html_tag']));
     }
 
     /**

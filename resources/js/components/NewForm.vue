@@ -79,7 +79,8 @@ export default {
             this.selectedField = field;
             axios.post('api/form-fields', {name: 'unnamed!', form_id: this.form.id, field_id: field.id })
                 .then((response) => {
-                    this.formFields.push( response.data.data);
+                    console.log(response.data.data)
+                    this.formFields.push(response.data.data);
                     this.selectedFormField = response.data.data;
                 })
                 .catch((error) => {

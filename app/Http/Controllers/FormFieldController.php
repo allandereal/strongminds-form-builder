@@ -38,7 +38,7 @@ class FormFieldController extends Controller
     public function store(StoreFormFieldRequest $request)
     {
         $form_field = FormField::create($request->validated());
-        return new FormFieldResource($form_field);
+        return new FormFieldResource($form_field->load(['field', 'form']));
     }
 
     /**

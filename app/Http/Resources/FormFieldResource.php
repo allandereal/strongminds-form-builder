@@ -15,9 +15,10 @@ class FormFieldResource extends JsonResource
     public function toArray($request)
     {
         return [
+            'id' => $this->id,
             'name' => $this->name,
-            'form_id' => $this->form_id,
-            'field_id' => $this->field_id
+            'form' => new FormResource($this->form),
+            'field' => new FieldResource($this->field)
         ];
     }
 }
