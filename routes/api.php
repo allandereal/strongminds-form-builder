@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\FieldController;
 use App\Http\Controllers\FormController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -19,4 +20,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::resource('forms', FormController::class)->only(['index', 'show']);
+Route::resource('forms', FormController::class)->only(['index', 'store']);
+Route::resource('fields', FieldController::class)->only(['index', 'store']);
