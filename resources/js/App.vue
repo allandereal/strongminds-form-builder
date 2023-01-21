@@ -1,7 +1,7 @@
 <template>
-    <div class="min-h-screen bg-gray-100 py-4 sm:pt-0">
+    <div class="min-h-screen bg-white py-4 sm:pt-0">
         <Forms v-show="!showNewForm" @open-form="toggleOpenForm()"/>
-        <NewForm v-show="showNewForm"/>
+        <NewForm v-show="showNewForm" @show-all-forms="toggleOpenForm()"/>
     </div>
 </template>
 
@@ -18,7 +18,7 @@ export default {
     },
     methods: {
         toggleOpenForm(){
-            this.showNewForm = true
+            this.showNewForm = !this.showNewForm
         },
     },
     components: {
