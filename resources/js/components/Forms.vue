@@ -8,7 +8,7 @@
                 </svg>
                 <span class="font-sm">Create form</span>
             </button>
-            <hr class="border-b border-slate-200 w-full"/>
+            <div class="border-b border-slate-300 w-full"></div>
             <table class="min-w-full divide-y divide-gray-300">
                 <thead class="bg-gray-50">
                 <tr>
