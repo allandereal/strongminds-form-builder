@@ -36,7 +36,9 @@ class FormFieldTest extends TestCase
             'id' => $form_field->id
         ];
 
-        $response = $this->put(route('form-fields.update', ['form_field' => $form_field->id]), $new_form_field);
+        $response = $this->put(route('form-fields.update', [
+            'form_field' => $form_field->id
+        ]), $new_form_field);
 
         $this->assertDatabaseHas('form_fields', $new_form_field);
         $response->assertStatus(200);

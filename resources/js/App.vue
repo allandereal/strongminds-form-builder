@@ -1,7 +1,7 @@
 <template>
     <div class="min-h-screen bg-white py-4 sm:pt-0">
-        <Forms v-show="!showNewForm" @open-form="toggleOpenForm()"/>
-        <NewForm v-show="showNewForm" @show-all-forms="toggleOpenForm()"/>
+        <Forms v-show="!showNewForm" @create-form="toggleOpenForm()" @edit-form="editForm"/>
+        <NewForm v-show="showNewForm" :form="activeForm" @show-all-forms="toggleOpenForm()"/>
     </div>
 </template>
 
@@ -14,12 +14,23 @@ export default {
     data(){
         return {
             showNewForm: false,
+            activeForm: {
+                id: null,
+                name: '',
+                description: '',
+                created_at: ''
+            },
         }
     },
     methods: {
         toggleOpenForm(){
             this.showNewForm = !this.showNewForm
         },
+        editForm(form){
+            this.activeForm = form
+            this.showNewForm = true;
+
+        }
     },
     components: {
         Forms,

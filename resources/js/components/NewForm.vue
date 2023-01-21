@@ -50,15 +50,10 @@ import DisclosureMenu from "./DisclosureMenu.vue";
 
 export default {
     name: "Forms",
+    props: ['form'],
     components: {DisclosureMenu, SelectFieldMenu},
     data(){
         return {
-            form: {
-                id: null,
-                name: '',
-                description: '',
-                created_at: ''
-            },
             fields: [],
             selectedField: null,
             formFields: [],
