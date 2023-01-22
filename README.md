@@ -4,7 +4,8 @@
 This is a form generator built with PHP in the backend and Javascript on the frontend  
 
 I have used the Laravel framework to handle the backend and vue.js to hand frontend interactivity 
-_*Screenshot*_
+
+*Screenshot*
 ![screenshot](public/screenshot.png "Form Generator sample")
 
 ### Requirements to install and run this project
