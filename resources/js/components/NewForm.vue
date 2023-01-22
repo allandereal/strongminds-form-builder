@@ -29,9 +29,18 @@
             </div>
             <div class="w-4/6 p-4 h-screen border-l border-gray-300 bg-gray-200">
                 <div class="w-full p-4 bg-white rounded">
-                    <div>
-                        Rendered form
-                    </div>
+                    <h3 class="font-semibold text-lg ">Rendered form</h3>
+                    <form :name="form.name.replace(/\W+/g, '-')"
+                          class="flex flex-col space-y-4 mt-4"
+                    >
+                        <div v-for="formField in form.formFields">
+                            <component
+                                :is="fieldToRender(formField.field.html_tag)"
+                                :label="formField.name"
+                                :formField="formField"
+                            />
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
@@ -42,11 +51,15 @@
 import axios from "axios";
 import SelectFieldMenu from "./SelectFieldMenu.vue";
 import FormFieldDetails from "./FormFieldDetails.vue";
+import Input from "./render/Input.vue";
+import Radio from "./render/Radio.vue";
+import Checkbox from "./render/Checkbox.vue";
+import Textarea from "./render/Textarea.vue";
 
 export default {
     name: "Forms",
     props: ['form'],
-    components: {FormFieldDetails, SelectFieldMenu},
+    components: {FormFieldDetails, SelectFieldMenu, Input, Radio, Checkbox, Textarea},
     data(){
         return {
             fields: [],
@@ -75,6 +88,16 @@ export default {
                     console.log(error)
                 })
         },
+        fieldToRender(html_tag){
+            return {
+                'input': Input,
+                'input:number': Input,
+                'input:date': Input,
+                'textarea': Textarea,
+                'input:radio': Radio,
+                'input:checkbox': Checkbox,
+            }[html_tag];
+        }
     },
     mounted() {
         axios.get('api/fields')

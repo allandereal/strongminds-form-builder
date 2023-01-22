@@ -139,7 +139,7 @@ export default {
                 'operator': this.calcDetails.operator,
                 'second_form_field_id': this.calcDetails.secondField,
             }
-            console.log(calcField);
+
             axios.post('api/field-calculations', calcField)
             .then()
             .catch((error) => console.log(error))
