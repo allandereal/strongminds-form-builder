@@ -1,11 +1,12 @@
 <template>
     <div class="min-h-screen bg-white py-4 sm:pt-0">
-        <Forms v-show="!showNewForm" @create-form="toggleOpenForm()" @edit-form="editForm"/>
+        <Forms v-show="!showNewForm" :forms="forms" @create-form="toggleOpenForm()" @edit-form="editForm"/>
         <NewForm
             v-show="showNewForm"
             :form="activeForm"
             @show-all-forms="toggleOpenForm()"
-            @form-field-deleted="resetForm"
+            @form-field-deleted="updateForm"
+            @form-created="updateForm"
         />
     </div>
 </template>
@@ -13,12 +14,14 @@
 <script>
 import Forms from "./components/Forms.vue";
 import NewForm from "./components/NewForm.vue";
+import axios from "axios";
 
 export default {
     name: "App",
     data(){
         return {
             showNewForm: false,
+            forms: [],
             activeForm: {
                 id: null,
                 name: '',
@@ -37,9 +40,24 @@ export default {
             this.showNewForm = true;
 
         },
-        resetForm(form){
+        updateForm(form){
+            console.log(form)
             this.activeForm = form
-        }
+            this.forms.push(form)
+        },
+        fetchForms(){
+            axios.get('api/forms')
+                .then((response) => {
+                    return this.forms = response.data.data
+                })
+                .catch((error) => {
+                    console.log(error)
+                    return []
+                })
+        },
+    },
+    mounted() {
+        this.forms = this.fetchForms();
     },
     components: {
         Forms,

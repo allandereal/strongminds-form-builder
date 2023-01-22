@@ -38,19 +38,12 @@ import axios from "axios";
 
 export default {
     name: "Forms",
+    props: ['forms'],
     data(){
-        return {
-            forms: []
-        }
+        return {}
     },
     mounted() {
-        axios.get('api/forms')
-            .then((response) => {
-                this.forms = response.data.data
-            })
-            .catch((error) => {
-                console.log(error)
-            })
+
     },
 }
 </script>

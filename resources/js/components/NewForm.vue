@@ -63,7 +63,8 @@ export default {
         saveForm(){
             axios.post('api/forms', this.form)
                 .then((response) => {
-                    this.form = response.data.data
+                    console.log(response.data.data)
+                    this.$emit('form-created', response.data.data)
                 })
                 .catch((error) => {
                     console.log(error)

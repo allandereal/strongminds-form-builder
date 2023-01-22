@@ -27,7 +27,7 @@
                             <button class="text-white rounded-full w-4 h-4 p-3 bg-gray-400 flex items-center justify-center">x</button>
                         </li>
                         <li class="px-2">
-                            <button class="text-indigo-600">add more</button>
+                            <button class="text-indigo-600">add option</button>
                         </li>
                     </ul>
                     <h4 class="py-4 font-semibold text-gray-700">Validation</h4>
