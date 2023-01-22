@@ -19,9 +19,18 @@ I have used the Laravel framework to handle the backend and vue.js to hand front
 2. `composer update`
 3. `npm update`
 4. `cp .env.exaple .env`
-5. Create a database named strongminds
+5. Create a database named form_generator
 6. Chang the `DB_DATABASE` and `DB_PASSWORD` to match your new database credentials
 7. `php artisan migrate --seed`
 8. `php artisan serve`
 
 Finally, visit [http://127.0.0.1:8000](http://127.0.0.1:8000) to view the application
+
+
+### Running tests
+To be able to run tests, please run the following commands
+1. `cp .env.example .env.testing`
+2. create a database named form_generator_test
+3. Chang the `DB_DATABASE` and `DB_PASSWORD` to match your new testing database credentials
+4. `php artisan test`
+
