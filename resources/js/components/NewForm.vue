@@ -95,6 +95,7 @@ export default {
         fieldToRender(html_tag){
             return {
                 'input': Input,
+                'input:text': Input,
                 'input:number': Input,
                 'input:date': Input,
                 'textarea': Textarea,
