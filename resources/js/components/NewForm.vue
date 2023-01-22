@@ -27,8 +27,8 @@
                     <FormFieldDetails :form="form"/>
                 </div>
             </div>
-            <div class="w-4/6 p-4 h-screen border-l border-gray-300 bg-gray-200">
-                <div class="w-full p-4 bg-white rounded">
+            <div class="w-4/6 p-4 h-screen border-l border-gray-300 bg-gray-200 overflow-auto">
+                <div class="w-full p-4 bg-white rounded overflow-auto">
                     <h3 class="font-semibold text-lg ">Rendered form</h3>
                     <form :name="form.name.replace(/\W+/g, '-')"
                           class="flex flex-col space-y-4 mt-4"
@@ -42,6 +42,9 @@
                             />
                         </div>
                     </form>
+                    <div class="mt-4 text-center">
+                        <a class="ml-2 text-indigo-600" :href="'export-forms/'+form.id+'?file_type=csv'">export form</a>
+                    </div>
                 </div>
             </div>
         </div>

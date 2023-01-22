@@ -1,6 +1,9 @@
 <?php
 
+use App\Exports\ExportForm;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use Maatwebsite\Excel\Facades\Excel;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,4 +18,8 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
     return view('home');
+});
+
+Route::get('/export-forms/{form}', function (Request $request, $form){
+    return Excel::download(new ExportForm($form), 'form_'.$form.'.'.$request->file_type ?? 'csv');
 });

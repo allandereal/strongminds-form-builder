@@ -7,9 +7,10 @@ I have used the Laravel framework to handle the backend and vue.js to hand front
 
 ### Requirements to install and run this project
 1. PHP >= 8.0
-2. Node >= 16.17
-3. Composer >=2.5
-4. npm >= 8.15
+2. MySQL >= 8.0
+3. Node >= 16.17
+4. Composer >=2.5
+5. npm >= 8.15
 
 ### Steps to install/deploy
 
