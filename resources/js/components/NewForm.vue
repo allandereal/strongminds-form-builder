@@ -38,6 +38,7 @@
                                 :is="fieldToRender(formField.field.html_tag)"
                                 :label="formField.name"
                                 :formField="formField"
+                                :required="fieldIsRequired(formField)"
                             />
                         </div>
                     </form>
@@ -97,6 +98,16 @@ export default {
                 'input:radio': Radio,
                 'input:checkbox': Checkbox,
             }[html_tag];
+        },
+        fieldIsRequired(formField){
+            let required = false;
+            formField.fieldValidations.map((v) => {
+                if (v.value === 'required'){
+                    required = true;
+                }
+            })
+
+            return required;
         }
     },
     mounted() {

@@ -1,8 +1,8 @@
 <template>
     <div class="flex flex-col space-y-2">
-        <label>{{ label }} <span v-if="isRequired()" class="font-semibold text-red-600">*</span></label>
+        <label>{{ label }} <span v-if="required" class="font-semibold text-red-600">*</span></label>
         <div class="flex items-center justify-start space-x-2" v-for="fieldOption in formField.fieldOptions">
-            <input :name="formField.id+'_check_'" type="checkbox" />
+            <input :name="formField.id+'_check_'" type="checkbox" class="rounded" />
             <span>{{ fieldOption.value}}</span>
         </div>
 
@@ -11,14 +11,12 @@
 <script>
 export default {
     name: 'Checkbox',
-    props: ['label', 'formField'],
+    props: ['label', 'formField', 'required'],
     data(){
         return {}
     },
-    methods: {
-        isRequired(){
-            return false;
-        }
+    mounted() {
+        console.log(this.formField.fieldValidations)
     }
 }
 </script>
