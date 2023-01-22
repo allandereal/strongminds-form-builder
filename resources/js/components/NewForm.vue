@@ -24,7 +24,7 @@
                 </form>
                 <div class="mt-4 space-y-4">
                     <span class="py-1 px-4 rounded bg-gray-300 text-sm">Form fields</span>
-                    <DisclosureMenu :form="form"/>
+                    <FormFieldDetails :form="form"/>
                 </div>
             </div>
             <div class="w-1/4 p-4 border-l border-slate-300 h-screen">
@@ -46,12 +46,12 @@
 <script>
 import axios from "axios";
 import SelectFieldMenu from "./SelectFieldMenu.vue";
-import DisclosureMenu from "./DisclosureMenu.vue";
+import FormFieldDetails from "./FormFieldDetails.vue";
 
 export default {
     name: "Forms",
     props: ['form'],
-    components: {DisclosureMenu, SelectFieldMenu},
+    components: {FormFieldDetails, SelectFieldMenu},
     data(){
         return {
             fields: [],

@@ -47,7 +47,7 @@ import { TrashIcon } from '@heroicons/vue/24/outline'
 import axios from "axios";
 
 export default {
-    name: "DisclosureMenu",
+    name: "FormFieldDetails",
     props: ['form'],
     data() {
         return {}
