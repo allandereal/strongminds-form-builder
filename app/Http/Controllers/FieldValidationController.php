@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\CrudFieldValidationRequest;
 use App\Http\Requests\StoreFieldValidationRequest;
 use App\Http\Requests\UpdateFieldValidationRequest;
 use App\Http\Resources\FieldOptionResource;
@@ -19,9 +20,20 @@ class FieldValidationController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function crud(CrudFieldValidationRequest $request)
     {
-        //
+        $existing_validation = FieldValidation::query()
+            ->where('form_field_id', $request->form_field_id)
+            ->where('value', $request->value)
+            ->first();
+
+        if ($request->action === 'create' && !$existing_validation){
+            FieldValidation::create($request->only(['form_field_id', 'value']));
+        } elseif ($request->action === 'delete'){
+            $existing_validation->delete();
+        }
+
+        return response()->json($request->all());
     }
 
     /**

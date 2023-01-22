@@ -38,9 +38,13 @@
                     </div>
                     <div>
                         <h4 class="py-4 font-semibold text-gray-700">Validation</h4>
+                        <div class="flex items-center justify-between">
+                            <span>Required?</span>
+                            <SwitchButton :formField="formField"/>
+                        </div>
                         <ul>
                             <li v-for="fieldOption in formField.fieldValidations">
-                                ljljl
+                                k k h jl jkf hhdh hdkdjhks
                             </li>
                         </ul>
                     </div>
@@ -58,6 +62,7 @@ import { Disclosure, DisclosureButton, DisclosurePanel } from '@headlessui/vue'
 import { ChevronUpIcon, XMarkIcon} from '@heroicons/vue/20/solid'
 import { TrashIcon } from '@heroicons/vue/24/outline'
 import axios from "axios";
+import SwitchButton from "./SwitchButton.vue";
 
 export default {
     name: "FormFieldDetails",
@@ -105,7 +110,13 @@ export default {
         }
     },
     components: {
-        Disclosure, DisclosureButton, DisclosurePanel, ChevronUpIcon, TrashIcon, XMarkIcon
+        SwitchButton,
+        Disclosure,
+        DisclosureButton,
+        DisclosurePanel,
+        ChevronUpIcon,
+        TrashIcon,
+        XMarkIcon
     }
 }
 </script>

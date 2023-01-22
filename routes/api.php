@@ -34,4 +34,6 @@ Route::resource('form-fields', FormFieldController::class)
         'destroy'
     ]);
 Route::resource('field-options', FieldOptionController::class)->only(['store', 'update', 'destroy']);
+
+Route::post('field-validations/crud', [FieldValidationController::class, 'crud']);
 Route::resource('field-validations', FieldValidationController::class)->only(['store', 'update', 'destroy']);
