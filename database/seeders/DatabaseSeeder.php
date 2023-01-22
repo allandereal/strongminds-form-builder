@@ -28,6 +28,7 @@ class DatabaseSeeder extends Seeder
 //            FormFieldSeeder::class,
 //            FieldOptionSeeder::class,
 //            FieldValidationSeeder::class,
+//            FieldCalculationSeeder::class,
         ]);
     }
 }

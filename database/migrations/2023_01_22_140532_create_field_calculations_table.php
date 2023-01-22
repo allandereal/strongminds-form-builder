@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\FormField;
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -13,10 +14,12 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('fields', function (Blueprint $table) {
+        Schema::create('field_calculations', function (Blueprint $table) {
             $table->id();
-            $table->string('name');
-            $table->string('html_tag');
+            $table->foreignIdFor(FormField::class)->unique();
+            $table->foreignIdFor(FormField::class, 'first_form_field_id');
+            $table->string('operator');
+            $table->foreignIdFor(FormField::class, 'second_form_field_id');
             $table->timestamps();
         });
     }
@@ -28,6 +31,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('fields');
+        Schema::dropIfExists('field_calculations');
     }
 };
