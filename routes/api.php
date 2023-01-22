@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\FieldCalculationController;
 use App\Http\Controllers\FieldController;
+use App\Http\Controllers\FieldDependencyController;
 use App\Http\Controllers\FieldOptionController;
 use App\Http\Controllers\FieldValidationController;
 use App\Http\Controllers\FormController;
@@ -39,3 +40,4 @@ Route::resource('field-options', FieldOptionController::class)->only(['store', '
 Route::post('field-validations/crud', [FieldValidationController::class, 'crud']);
 Route::resource('field-validations', FieldValidationController::class)->only(['store', 'update', 'destroy']);
 Route::resource('field-calculations', FieldCalculationController::class)->only(['store', 'update']);
+Route::resource('field-dependencies', FieldDependencyController::class)->only(['store', 'update']);
