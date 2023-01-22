@@ -20,20 +20,23 @@
                         <label>Name</label>
                         <input @change="updateFormFieldName(formField)" class="border rounded-lg p-2 " v-model="formField.name">
                     </form>
-                    <h4 class="py-4 font-semibold text-gray-700">Options</h4>
-                    <ul>
-                        <li class="rounded py-1 px-2 hover:bg-gray-300" v-for="fieldOption in formField.fieldOptions">
-                            <div class="flex justify-between">
-                                <input @change="updateFieldOption(fieldOption)" class="px-2 rounded" v-model="fieldOption.value" />
-                                <button @click="deleteFieldOption(fieldOption)" class="rounded-full p-1 bg-red-200 flex items-center justify-center">
-                                    <XMarkIcon class="w-3 h-3 text-red-600"/>
-                                </button>
-                            </div>
-                        </li>
-                        <li class="px-2">
-                            <button @click="this.$parent.$emit('form-field-option-added', form, formField)" class="text-indigo-600">add option</button>
-                        </li>
-                    </ul>
+                    <div v-if="fieldHasOptions(formField.field)">
+                        <h4 class="py-4 font-semibold text-gray-700">Options</h4>
+                        <ul>
+                            <li class="rounded py-1 px-2 hover:bg-gray-300" v-for="fieldOption in formField.fieldOptions">
+                                <div class="flex justify-between">
+                                    <input @change="updateFieldOption(fieldOption)" class="px-2 rounded" v-model="fieldOption.value" />
+                                    <button @click="deleteFieldOption(fieldOption)" class="rounded-full p-1 bg-red-200 flex items-center justify-center">
+                                        <XMarkIcon class="w-3 h-3 text-red-600"/>
+                                    </button>
+                                </div>
+                            </li>
+                            <li class="px-2">
+                                <button @click="this.$parent.$emit('form-field-option-added', form, formField)" class="text-indigo-600">add option</button>
+                            </li>
+                        </ul>
+                    </div>
+
                     <h4 class="py-4 font-semibold text-gray-700">Validation</h4>
                 </DisclosurePanel>
             </Disclosure></div>
@@ -88,6 +91,12 @@ export default {
                     console.log(error)
                 })
         },
+        fieldHasOptions(field){
+            if (['input:checkbox', 'input:radio'].includes(field.html_tag)){
+                return true;
+            }
+            return false;
+        }
     },
     components: {
         Disclosure, DisclosureButton, DisclosurePanel, ChevronUpIcon, TrashIcon, XMarkIcon
