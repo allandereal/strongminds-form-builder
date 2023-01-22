@@ -14,7 +14,7 @@ I have used the Laravel framework to handle the backend and vue.js to hand front
 
 ### Steps to install/deploy
 
-- Clone this repository [allandereal / strongminds-test](https://github.com/allandereal/strongminds-test.git)
+- Clone this repository [allandereal / strongminds-form-generator](https://github.com/allandereal/strongminds-form-generator.git)
 - Then run the following commands
 1. `cd strongminds-test`
 2. `composer update`
