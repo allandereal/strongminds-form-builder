@@ -2,8 +2,10 @@
 
 use App\Http\Controllers\FieldController;
 use App\Http\Controllers\FieldOptionController;
+use App\Http\Controllers\FieldValidationController;
 use App\Http\Controllers\FormController;
 use App\Http\Controllers\FormFieldController;
+use App\Models\FieldValidation;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -32,3 +34,4 @@ Route::resource('form-fields', FormFieldController::class)
         'destroy'
     ]);
 Route::resource('field-options', FieldOptionController::class)->only(['store', 'update', 'destroy']);
+Route::resource('field-validations', FieldValidationController::class)->only(['store', 'update', 'destroy']);

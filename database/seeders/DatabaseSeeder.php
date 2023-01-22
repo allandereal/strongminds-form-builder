@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+use App\Models\FieldValidation;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -25,7 +26,8 @@ class DatabaseSeeder extends Seeder
             FormSeeder::class,
             FieldSeeder::class,
 //            FormFieldSeeder::class,
-            FieldOptionSeeder::class,
+//            FieldOptionSeeder::class,
+//            FieldValidationSeeder::class,
         ]);
     }
 }

@@ -36,8 +36,14 @@
                             </li>
                         </ul>
                     </div>
-
-                    <h4 class="py-4 font-semibold text-gray-700">Validation</h4>
+                    <div>
+                        <h4 class="py-4 font-semibold text-gray-700">Validation</h4>
+                        <ul>
+                            <li v-for="fieldOption in formField.fieldValidations">
+                                ljljl
+                            </li>
+                        </ul>
+                    </div>
                 </DisclosurePanel>
             </Disclosure></div>
             <button class="mt-6" @click="deleteFormField(formField)">

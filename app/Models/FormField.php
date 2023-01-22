@@ -29,4 +29,9 @@ class FormField extends Model
     {
         return $this->hasMany(FieldOption::class);
     }
+
+    public function fieldValidations()
+    {
+        return $this->hasMany(FieldValidation::class);
+    }
 }
