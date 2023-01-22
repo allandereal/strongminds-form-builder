@@ -2,6 +2,7 @@
 
 namespace App\Http\Resources;
 
+use App\Models\FieldCalculation;
 use Illuminate\Http\Resources\Json\JsonResource;
 
 class FormFieldResource extends JsonResource
@@ -21,6 +22,7 @@ class FormFieldResource extends JsonResource
             'field' => $this->field->attributesToArray(),
             'fieldOptions' => FieldOptionResource::collection($this->fieldOptions),
             'fieldValidations' => FieldValidationResource::collection($this->fieldValidations),
+            'fieldCalculations' => FieldCalculationResource::collection($this->fieldCalculations),
         ];
     }
 }

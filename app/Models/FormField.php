@@ -34,4 +34,9 @@ class FormField extends Model
     {
         return $this->hasMany(FieldValidation::class);
     }
+
+    public function fieldCalculations()
+    {
+        return $this->hasMany(FieldCalculation::class);
+    }
 }

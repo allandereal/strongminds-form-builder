@@ -38,7 +38,7 @@
                     </div>
                     <div v-if="formField.field.name === 'Calculated'" class="w-full p-2 mt-4 rounded border border-gray-200 bg-gray-100">
                         <h4 class="py-2 font-semibold text-gray-700">Calculation</h4>
-                        <form class="flex flex-col items-start justify-start space-y-2" @submit.prevent="calculateField" >
+                        <form class="flex flex-col items-start justify-start space-y-2" @submit.prevent="calculateField(formField)" >
                             <div class="flex items-center justify-between space-x-2 w-full">
                                 <div>First Field</div>
                                 <select class="rounded h-8 py-1 border-gray-300" v-model="calcDetails.firstField" required>
@@ -132,8 +132,17 @@ export default {
         fieldHasOptions(field){
             return ['input:checkbox', 'input:radio'].includes(field.html_tag);
         },
-        calculateField(){
-            //
+        calculateField(formField){
+            let calcField = {
+                'form_field_id': formField.id,
+                'first_form_field_id': this.calcDetails.firstField,
+                'operator': this.calcDetails.operator,
+                'second_form_field_id': this.calcDetails.secondField,
+            }
+            console.log(calcField);
+            axios.post('api/field-calculations', calcField)
+            .then()
+            .catch((error) => console.log(error))
         }
     },
     components: {
