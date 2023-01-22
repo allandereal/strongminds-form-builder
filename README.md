@@ -4,6 +4,8 @@
 This is a form generator built with PHP in the backend and Javascript on the frontend  
 
 I have used the Laravel framework to handle the backend and vue.js to hand frontend interactivity 
+_*Screenshot*_
+![screenshot](public/screenshot.png "Form Generator sample")
 
 ### Requirements to install and run this project
 1. PHP >= 8.0
@@ -14,7 +16,7 @@ I have used the Laravel framework to handle the backend and vue.js to hand front
 
 ### Steps to install/deploy
 
-- Clone this repository [allandereal / strongminds-form-generator](https://github.com/allandereal/strongminds-form-generator.git)
+- Clone this repository [allandereal / strongminds-form-builder](https://github.com/allandereal/strongminds-form-builder.git)
 - Then run the following commands
 1. `cd strongminds-test`
 2. `composer update`
