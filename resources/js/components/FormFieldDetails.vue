@@ -22,9 +22,11 @@
                     </form>
                     <h4 class="py-4 font-semibold text-gray-700">Options</h4>
                     <ul>
-                        <li class="rounded py-1 px-2 hover:bg-gray-300 flex justify-between" v-for="fieldOption in formField.fieldOptions">
-                            <span>{{ fieldOption.value }}</span>
-                            <button class="text-white rounded-full w-4 h-4 p-3 bg-gray-400 flex items-center justify-center">x</button>
+                        <li class="rounded py-1 px-2 hover:bg-gray-300" v-for="fieldOption in formField.fieldOptions">
+                            <div class="flex justify-between">
+                                <input value="{{ fieldOption.value }}" />
+                                <button class="text-white rounded-full w-4 h-4 p-3 bg-gray-400 flex items-center justify-center">x</button>
+                            </div>
                         </li>
                         <li class="px-2">
                             <button class="text-indigo-600">add option</button>

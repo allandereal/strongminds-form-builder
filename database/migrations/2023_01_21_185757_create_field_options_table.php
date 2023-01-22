@@ -18,7 +18,6 @@ return new class extends Migration
             $table->id();
             $table->foreignIdFor(FormField::class);
             $table->string('value');
-            $table->boolean('checked')->default(0);
             $table->timestamps();
         });
     }

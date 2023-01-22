@@ -18,7 +18,6 @@ class FieldOptionResource extends JsonResource
             'id' => $this->id,
             'form_field_id' => $this->form_field_id,
             'value' => $this->value,
-            'checked' => $this->checked,
         ];
     }
 }

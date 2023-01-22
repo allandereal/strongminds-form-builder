@@ -20,7 +20,6 @@ class FieldOptionFactory extends Factory
         return [
             'form_field_id' => FormField::factory(),
             'value' => fake()->word(),
-            'checked' => fake()->boolean()
         ];
     }
 }

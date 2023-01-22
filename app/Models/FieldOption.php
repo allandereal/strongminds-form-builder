@@ -9,6 +9,8 @@ class FieldOption extends Model
 {
     use HasFactory;
 
+    protected $fillable = ['value', 'form_field_id'];
+
     public function formField()
     {
         return $this->belongsTo(FormField::class);
