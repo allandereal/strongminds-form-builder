@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\FieldController;
+use App\Http\Controllers\FieldOptionController;
 use App\Http\Controllers\FormController;
 use App\Http\Controllers\FormFieldController;
 use Illuminate\Http\Request;
@@ -30,3 +31,4 @@ Route::resource('form-fields', FormFieldController::class)
         'update',
         'destroy'
     ]);
+Route::resource('field-options', FieldOptionController::class)->only(['store', 'update', 'destroy']);

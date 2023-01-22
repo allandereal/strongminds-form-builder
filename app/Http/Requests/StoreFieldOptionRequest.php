@@ -13,7 +13,7 @@ class StoreFieldOptionRequest extends FormRequest
      */
     public function authorize()
     {
-        return false;
+        return true;
     }
 
     /**
@@ -24,7 +24,7 @@ class StoreFieldOptionRequest extends FormRequest
     public function rules()
     {
         return [
-            //
+            'form_field_id' => ['required']
         ];
     }
 }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreFieldOptionRequest;
 use App\Http\Requests\UpdateFieldOptionRequest;
+use App\Http\Resources\FieldOptionResource;
 use App\Models\FieldOption;
 
 class FieldOptionController extends Controller
@@ -36,7 +37,8 @@ class FieldOptionController extends Controller
      */
     public function store(StoreFieldOptionRequest $request)
     {
-        //
+        $field_option = FieldOption::create([...$request->validated(), 'value' => 'unnamed!']);
+        return new FieldOptionResource($field_option);
     }
 
     /**
