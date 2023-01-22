@@ -11,10 +11,5 @@ export default {
     data(){
         return {}
     },
-    methods: {
-        isRequired(){
-            return false;
-        }
-    }
 }
 </script>

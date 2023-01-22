@@ -11,13 +11,5 @@
 export default {
     name: 'Radio',
     props: ['label', 'formField','required'],
-    data(){
-        return {}
-    },
-    methods: {
-        isRequired(){
-            return false;
-        }
-    }
 }
 </script>
