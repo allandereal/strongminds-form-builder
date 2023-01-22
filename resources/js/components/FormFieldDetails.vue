@@ -36,17 +36,37 @@
                             </li>
                         </ul>
                     </div>
+                    <div v-if="formField.field.name === 'Calculated'" class="w-full p-2 mt-4 rounded border border-gray-200 bg-gray-100">
+                        <h4 class="py-2 font-semibold text-gray-700">Calculation</h4>
+                        <form class="flex flex-col items-start justify-start space-y-2" @submit.prevent="calculateField" >
+                            <div class="flex items-center justify-between space-x-2 w-full">
+                                <div>First Field</div>
+                                <select class="rounded h-8 py-1 border-gray-300" v-model="calcDetails.firstField" required>
+                                    <option :value="innerFormField.id" v-for="innerFormField in form.formFields">{{ innerFormField.name }}</option>
+                                </select>
+                            </div>
+                            <div class="flex items-center justify-between space-x-2 w-full">
+                                <div>operator</div>
+                                <select class="rounded h-8 py-1 border-gray-300"  v-model="calcDetails.operator" required>
+                                    <option :value="op" v-for="op in operators">{{ op}}</option>
+                                </select>
+                            </div>
+
+                            <div class="flex items-center justify-between space-x-2 w-full">
+                                <div>Second Field</div>
+                                <select class="rounded h-8 py-1 border-gray-300" v-model="calcDetails.secondField" required>
+                                    <option :value="innerFormField2.id" v-for="innerFormField2 in form.formFields">{{ innerFormField2.name }}</option>
+                                </select>
+                            </div>
+                            <button class="py-1 px-2 text-white bg-indigo-600 rounded" type="submit">save</button>
+                        </form>
+                    </div>
                     <div>
                         <h4 class="py-4 font-semibold text-gray-700">Validation</h4>
                         <div class="flex items-center justify-between">
                             <span>Required?</span>
                             <SwitchButton :formField="formField"/>
                         </div>
-                        <ul>
-                            <li v-for="fieldOption in formField.fieldValidations">
-                                k k h jl jkf hhdh hdkdjhks
-                            </li>
-                        </ul>
                     </div>
                 </DisclosurePanel>
             </Disclosure></div>
@@ -68,7 +88,14 @@ export default {
     name: "FormFieldDetails",
     props: ['form'],
     data() {
-        return {}
+        return {
+            calcDetails: {
+                firstField: null,
+                operator: null,
+                secondField: null,
+            },
+            operators: ['+', '-', '*', '/'],
+        }
     },
 
     methods: {
@@ -103,10 +130,10 @@ export default {
                 })
         },
         fieldHasOptions(field){
-            if (['input:checkbox', 'input:radio'].includes(field.html_tag)){
-                return true;
-            }
-            return false;
+            return ['input:checkbox', 'input:radio'].includes(field.html_tag);
+        },
+        calculateField(){
+            //
         }
     },
     components: {

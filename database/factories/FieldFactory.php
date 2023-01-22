@@ -21,9 +21,9 @@ class FieldFactory extends Factory
             ['name' => 'Long Text', 'html_tag' => 'textarea'],
             ['name' => 'Number', 'html_tag' => 'input:number'],
             ['name' => 'Date', 'html_tag' => 'input:date'],
-            ['name' => 'Calc Field', 'html_tag' => 'input'],
-            ['name' => 'Multisel', 'html_tag' => 'input:checkbox'],
-            ['name' => 'Singlesel', 'html_tag' => 'input:radio'],
+            ['name' => 'Calculated', 'html_tag' => 'input'],
+            ['name' => 'Multiselect', 'html_tag' => 'input:checkbox'],
+            ['name' => 'Singleselect', 'html_tag' => 'input:radio'],
         ];
 
         return $fields[array_rand($fields)];

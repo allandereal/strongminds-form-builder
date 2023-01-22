@@ -5,7 +5,7 @@
             <a href="/" @click.prevent="this.$emit('show-all-forms')" class="text-indigo-600">view all forms</a>
         </div>
         <div class="flex items-start justify-between h-screen w-full">
-            <div class="w-2/6 py-4 pl-4 pr-1 h-screen">
+            <div class="w-2/6 py-4 px-4 h-screen">
                 <div class="flex justify-between items-center" v-show="form.id !== null">
                     <div class="font-semibold">{{ form.name}}</div>
                     <SelectFieldMenu :fields="fields" @field-selected="fieldSelected"/>
