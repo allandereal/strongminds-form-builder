@@ -92,6 +92,6 @@ class FieldValidationController extends Controller
 
         $fieldValidation->delete();
 
-        return new FormResource(Form::with(['formFields.fieldOptions'])->find($form_field->form_id));
+        return new FormResource(Form::with(['formFields.fieldOptions', 'formFields.fieldValidations'])->find($form_field->form_id));
     }
 }

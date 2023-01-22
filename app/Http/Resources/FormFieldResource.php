@@ -20,6 +20,7 @@ class FormFieldResource extends JsonResource
             'form' => $this->form->attributesToArray(),
             'field' => $this->field->attributesToArray(),
             'fieldOptions' => FieldOptionResource::collection($this->fieldOptions),
+            'fieldValidations' => FieldValidationResource::collection($this->fieldValidations),
         ];
     }
 }

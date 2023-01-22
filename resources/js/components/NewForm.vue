@@ -58,7 +58,6 @@ export default {
         saveForm(){
             axios.post('api/forms', this.form)
                 .then((response) => {
-                    console.log(response.data.data)
                     this.$emit('form-created', response.data.data)
                 })
                 .catch((error) => {
@@ -75,9 +74,6 @@ export default {
                 .catch((error) => {
                     console.log(error)
                 })
-        },
-        updateSelectedFormField(){
-
         },
     },
     mounted() {
