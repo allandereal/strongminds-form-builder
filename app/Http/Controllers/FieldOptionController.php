@@ -72,7 +72,7 @@ class FieldOptionController extends Controller
      */
     public function update(UpdateFieldOptionRequest $request, FieldOption $fieldOption)
     {
-        //
+        return $fieldOption->update($request->validated());
     }
 
     /**
