@@ -5,7 +5,10 @@ namespace App\Http\Controllers;
 use App\Http\Requests\StoreFieldOptionRequest;
 use App\Http\Requests\UpdateFieldOptionRequest;
 use App\Http\Resources\FieldOptionResource;
+use App\Http\Resources\FormResource;
 use App\Models\FieldOption;
+use App\Models\Form;
+use App\Models\FormField;
 
 class FieldOptionController extends Controller
 {
@@ -79,10 +82,14 @@ class FieldOptionController extends Controller
      * Remove the specified resource from storage.
      *
      * @param  \App\Models\FieldOption  $fieldOption
-     * @return \Illuminate\Http\Response
+     * @return FormResource
      */
     public function destroy(FieldOption $fieldOption)
     {
-        //
+        $form_field = FormField::find($fieldOption->form_field_id);
+
+        $fieldOption->delete();
+
+        return new FormResource(Form::with(['formFields.fieldOptions'])->find($form_field->form_id));
     }
 }

@@ -8,6 +8,7 @@
             @form-field-deleted="updateForm"
             @form-created="updateForm"
             @form-field-option-added="addFormFieldOption"
+            @field-option-deleted="updateForm"
         />
     </div>
 </template>
@@ -42,7 +43,6 @@ export default {
 
         },
         updateForm(form){
-            console.log(form)
             this.activeForm = form
             this.forms.push(form)
         },
@@ -60,6 +60,11 @@ export default {
             axios.post('api/field-options', {form_field_id: formField.id})
                 .then((response) => {
                     this.fetchForms()
+                    this.forms.map((f) => {
+                        if (f.id === form.id){
+                            this.activeForm = f
+                        }
+                    })
                 })
                 .catch((error) => {
                     console.log(error)

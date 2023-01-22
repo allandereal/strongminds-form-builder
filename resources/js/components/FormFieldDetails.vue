@@ -24,8 +24,10 @@
                     <ul>
                         <li class="rounded py-1 px-2 hover:bg-gray-300" v-for="fieldOption in formField.fieldOptions">
                             <div class="flex justify-between">
-                                <input value="{{ fieldOption.value }}" />
-                                <button class="text-white rounded-full w-4 h-4 p-3 bg-gray-400 flex items-center justify-center">x</button>
+                                <input @change="updateFieldOption(fieldOption)" class="px-2 rounded" v-model="fieldOption.value" />
+                                <button @click="deleteFieldOption(fieldOption)" class="rounded-full p-1 bg-red-200 flex items-center justify-center">
+                                    <XMarkIcon class="w-3 h-3 text-red-600"/>
+                                </button>
                             </div>
                         </li>
                         <li class="px-2">
@@ -44,7 +46,7 @@
 
 <script>
 import { Disclosure, DisclosureButton, DisclosurePanel } from '@headlessui/vue'
-import { ChevronUpIcon} from '@heroicons/vue/20/solid'
+import { ChevronUpIcon, XMarkIcon} from '@heroicons/vue/20/solid'
 import { TrashIcon } from '@heroicons/vue/24/outline'
 import axios from "axios";
 
@@ -62,16 +64,33 @@ export default {
                 .catch()
         },
         deleteFormField(formField){
-            axios.delete('api/form-fields/' + formField.id, formField)
+            axios.delete('api/form-fields/' + formField.id)
                 .then((response) => {
-                    console.log(response.data.data)
                     this.$parent.$emit('form-field-deleted', response.data.data)
                 })
                 .catch()
         },
+        updateFieldOption(fieldOption){
+            axios.put('api/field-options/' + fieldOption.id, fieldOption)
+                .then((response) => {
+
+                })
+                .catch((error) => {
+                    console.log(error)
+                })
+        },
+        deleteFieldOption(formField){
+            axios.delete('api/field-options/' + formField.id)
+                .then((response) => {
+                    this.$parent.$emit('field-option-deleted', response.data.data)
+                })
+                .catch((error)=>{
+                    console.log(error)
+                })
+        },
     },
     components: {
-        Disclosure, DisclosureButton, DisclosurePanel, ChevronUpIcon, TrashIcon
+        Disclosure, DisclosureButton, DisclosurePanel, ChevronUpIcon, TrashIcon, XMarkIcon
     }
 }
 </script>
