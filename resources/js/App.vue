@@ -7,6 +7,7 @@
             @show-all-forms="toggleOpenForm()"
             @form-field-deleted="updateForm"
             @form-created="updateForm"
+            @form-field-option-added="addFormFieldOption"
         />
     </div>
 </template>
@@ -55,6 +56,15 @@ export default {
                     return []
                 })
         },
+        addFormFieldOption(form, formField){
+            axios.post('api/field-options', {form_field_id: formField.id})
+                .then((response) => {
+                    this.fetchForms()
+                })
+                .catch((error) => {
+                    console.log(error)
+                })
+        }
     },
     mounted() {
         this.forms = this.fetchForms();

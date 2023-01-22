@@ -29,7 +29,7 @@
                             </div>
                         </li>
                         <li class="px-2">
-                            <button class="text-indigo-600">add option</button>
+                            <button @click="this.$parent.$emit('form-field-option-added', form, formField)" class="text-indigo-600">add option</button>
                         </li>
                     </ul>
                     <h4 class="py-4 font-semibold text-gray-700">Validation</h4>
@@ -68,7 +68,7 @@ export default {
                     this.$parent.$emit('form-field-deleted', response.data.data)
                 })
                 .catch()
-        }
+        },
     },
     components: {
         Disclosure, DisclosureButton, DisclosurePanel, ChevronUpIcon, TrashIcon

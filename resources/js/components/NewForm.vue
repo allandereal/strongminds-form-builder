@@ -5,7 +5,7 @@
             <a href="/" @click.prevent="this.$emit('show-all-forms')" class="text-indigo-600">view all forms</a>
         </div>
         <div class="flex items-start justify-between h-screen w-full">
-            <div class="w-1/4 py-4 pl-4 pr-1 h-screen">
+            <div class="w-2/6 py-4 pl-4 pr-1 h-screen">
                 <div class="flex justify-between items-center" v-show="form.id !== null">
                     <div class="font-semibold">{{ form.name}}</div>
                     <SelectFieldMenu :fields="fields" @field-selected="fieldSelected"/>
@@ -27,12 +27,7 @@
                     <FormFieldDetails :form="form"/>
                 </div>
             </div>
-            <div class="w-1/4 p-4 border-l border-slate-300 h-screen">
-                <ul>
-                    <li></li>
-                </ul>
-            </div>
-            <div class="w-2/4 p-4 h-screen border-l border-gray-300 bg-gray-200">
+            <div class="w-4/6 p-4 h-screen border-l border-gray-300 bg-gray-200">
                 <div class="w-full p-4 bg-white rounded">
                     <div>
                         Rendered form
